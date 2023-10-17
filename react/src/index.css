@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Montez&display=swap');
+
+*,
+body,
+html {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #f6faf7;
+}
+
+section {
+	background-color: #f69d9d;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.styled-font {
+	font-family: 'Montez', cursive;
+	font-size: 2rem;
+}
+
+.normal-font {
+	font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.primary-color {
+	color: #396caf;
+}
+.red {
+	color: #ff0000;
+}
+.white {
+	color: #fff;
+}
+
+.parallax-box {
+	position: relative;
+	top: 0;
+	min-height: 100vh;
+	z-index: 0;
+	filter: brightness(90%);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.parallax-box2 {
+	position: relative;
+	min-height: 65vh;
+	filter: brightness(70%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.parallax-box2 img {
+	object-fit: cover;
+	min-height: 100vh;
+}
+
+.parallax-box img {
+	object-fit: cover;
+	min-height: 100vh;
+}
+@media screen and (max-width: 1000px) {
+	.parallax-box2 {
+		min-height: 92vh;
+	}
+	.parallax-box2 img {
+		min-height: 100vh;
+		object-fit: cover;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.parallax-box img {
+		object-fit: cover;
+	}
+	.parallax-box2 {
+		min-height: 90vh;
+	}
+
+	.parallax-box2 img {
+		min-height: 100vh;
+		object-fit: cover;
+	}
+}
+
+#root {
+	position: relative;
+}
+
+.mobile-menu {
+	color: #396caf;
+	font-size: 2rem;
+}
+
+.mobile-menu:hover {
+	color: #000;
+}
+
+.bigger {
+	font-size: 4rem;
+}
+.light-font {
+	opacity: 0.7;
+}
+
+.lighter-font {
+	opacity: 0.5;
+	z-index: 0;
+}
+
+.lightest-font {
+	opacity: 0.3;
+}
+
+.smaller {
+	font-size: 1.5rem;
+}
