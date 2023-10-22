@@ -134,10 +134,10 @@ const Invite = ({ setShowSpinner }) => {
 		axiosClient
 			.post('/getinvite', payload)
 			.then(({ data }) => {
-				setUser_(data.user); // Set the user state
+				setUser_(data.user);
 				setUser(data.user);
 				setToken(data.token);
-				setShowUserOverlay(true); // Show the user overlay
+				setShowUserOverlay(true);
 			})
 			.catch((error) => {
 				const response = error.response;
@@ -167,14 +167,14 @@ const Invite = ({ setShowSpinner }) => {
 
 				<Form>
 					<form onSubmit={onSubmit}>
-						<input ref={nameRef} className="input" placeholder="Name" />
-						<input ref={emailRef} className="input" placeholder="Email" />
+						<input ref={nameRef} className="input" type="text" placeholder="Name and Surname" />
+						<input ref={emailRef} className="input" placeholder="Email Address" />
 						<button className="btn">Find My Invitation</button>
 					</form>
 				</Form>
 			</Text>
 			{errors && <ErrorOverlay errors={errors} onClose={onCloseErrorOverlay} />}
-			{showUserOverlay && <UserOverlay user={user} onClose={() => setShowUserOverlay(false)} />}
+			{showUserOverlay && <UserOverlay user={user} onClose={() => setShowUserOverlay(false)} setShowSpinner={setShowSpinner} />}
 		</Container>
 	);
 };

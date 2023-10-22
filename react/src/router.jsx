@@ -1,11 +1,23 @@
 import { createBrowserRouter } from 'react-router-dom';
-import App from './views/FrontPage';
+import FrontPage from './views/FrontPage';
+import Location from './views/Location';
 import NotFound from './views/NotFound';
+import Rsvp from './views/Rsvp';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <App />,
+		element: <FrontPage />,
+	},
+
+	{
+		path: '/location',
+		element: <Location />,
+	},
+
+	{
+		path: '/rsvp',
+		element: <Rsvp />,
 	},
 
 	{

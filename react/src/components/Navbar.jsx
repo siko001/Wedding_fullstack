@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const Container = styled.div`
 	width: 100%;
@@ -117,12 +118,22 @@ const Navbar = () => {
 				<MobileOverLay>
 					<div className="mobile-body">
 						<div>
-							<ul className="normal-font">
-								<li>Home</li>
-								<li>Location</li>
-								<li>RSVP</li>
-								<li>Menu</li>
-								<li>Schedual</li>
+							<ul>
+								<li>
+									<Link to="/">Home</Link>
+								</li>
+								<li>
+									<Link to="/location">Location</Link>
+								</li>
+								<li>
+									<Link to="/rsvp">RSVP</Link>
+								</li>
+								<li>
+									<Link to="/menu">Menu</Link>
+								</li>
+								<li>
+									<Link to="/schedule">Schedule</Link>
+								</li>
 							</ul>
 						</div>
 						<div className="footer">
@@ -142,11 +153,21 @@ const Navbar = () => {
 					<Menu className="normal-font">
 						<DesktopMenu>
 							<ul>
-								<li>Home</li>
-								<li>Location</li>
-								<li>RSVP</li>
-								<li>Menu</li>
-								<li>Schedual</li>
+								<li>
+									<Link to="/">Home</Link>
+								</li>
+								<li>
+									<Link to="/location">Location</Link>
+								</li>
+								<li>
+									<Link to="/rsvp">RSVP</Link>
+								</li>
+								<li>
+									<Link to="/menu">Menu</Link>
+								</li>
+								<li>
+									<Link to="/schedule">Schedule</Link>
+								</li>
 							</ul>
 						</DesktopMenu>
 						<MobileMenu>

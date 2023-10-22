@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import Heart from './ThreeScene';
 
 const Conatiner = styled.div`
 	height: 90vh;
@@ -14,6 +15,7 @@ const Conatiner = styled.div`
 	.top {
 		display: flex;
 		justify-content: center;
+		max-width: 100vw;
 		gap: 10px;
 	}
 
@@ -46,12 +48,21 @@ const Conatiner = styled.div`
 		}
 	}
 	.heart {
+		display: flex;
 		font-size: 5rem;
 		margin-top: 40px;
 		margin-right: 40px;
+		max-width: 250px;
+		max-height: 250px;
+		min-width: 250px;
+		min-height: 250px;
 		@media screen and (max-width: 750px) {
 			font-size: 2.5rem;
 			margin-right: 10px;
+			max-width: 50px;
+			max-height: 50px;
+			min-width: 50px;
+			min-height: 50px;
 		}
 	}
 
@@ -78,12 +89,21 @@ const Us = () => {
 			<div className="top">
 				<div className="us-container">
 					<div className="photo"></div>
-					<div className="name styled-font primary-color">Karina Vrazhalska</div>
+					<div className="name styled-font primary-color">
+						Karina <br />
+						Vrazhalska
+					</div>
 				</div>
-				<FontAwesomeIcon className="primary-color heart" icon={faHeart} />
+				{/* <FontAwesomeIcon className="primary-color heart" icon={faHeart} /> */}
+				<div className="heart">
+					<Heart />
+				</div>
 				<div className="us-container">
 					<div className="photo"></div>
-					<div className="name styled-font primary-color">Neil Mallia</div>
+					<div className="name styled-font primary-color">
+						Neil
+						<br /> Mallia
+					</div>
 				</div>
 			</div>
 			<div className="bottom">

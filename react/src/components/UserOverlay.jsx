@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import axiosClient from '../axiosClient';
 
 const Conatiner = styled.div`
 	z-index: 999;
@@ -70,7 +71,34 @@ const Conatiner = styled.div`
 	}
 `;
 
-const UserOverlay = ({ user, onClose }) => {
+const UserOverlay = ({ user, onClose, setShowSpinner }) => {
+	const [selectedValue, setSelectedValue] = useState('yes');
+	const [responseMessage, setResponseMessage] = useState(null);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setShowSpinner(true);
+
+		axiosClient
+			.put('/confirm_guest', { confirmed: 'yes', attending: selectedValue, email: user.email })
+			.then((response) => {
+				if (response.status === 200) {
+					setResponseMessage(response.data.message);
+				}
+			})
+			.catch((error) => {
+				if (error.response && error.response.status === 422) {
+					const errorMessage = error.response.data.message;
+					console.error('Validation Error:', errorMessage);
+				} else {
+					console.error('An error occurred:', error);
+				}
+			})
+			.finally(() => {
+				setShowSpinner(false);
+			});
+	};
+
 	return (
 		<Conatiner>
 			<div className="heading">
@@ -78,24 +106,39 @@ const UserOverlay = ({ user, onClose }) => {
 			</div>
 			<div className="user-details">
 				<p>{user.fullname}</p>
-
+				{responseMessage && (
+					<div>
+						<p>{responseMessage}</p>
+					</div>
+				)}
 				{user.confirmed === null ? (
-					<form>
+					<form onSubmit={handleSubmit}>
 						<h3 className="primary-color">Attending?</h3>
 						<br></br>
 						<label>
-							<input type="radio" name="attendance" value="yes" />
+							<input
+								type="radio"
+								defaultChecked={true}
+								name="attendance"
+								value="yes"
+								onChange={() => setSelectedValue('yes')}
+							/>
 							Yes, I Confirm my attendance
 						</label>
 						<br></br>
 						<br></br>
 						<label>
-							<input type="radio" name="attendance" value="no" />
+							<input type="radio" name="attendance" value="no" onChange={() => setSelectedValue('no')} />
 							Sorry, won't make it
 						</label>
 						<br></br>
 						<br></br>
-						<button className="attendance-btn">Submit Attendance</button>
+						<button
+							className={responseMessage ? 'attendance-btn disabled' : 'attendance-btn'}
+							disabled={responseMessage ? true : false}
+						>
+							Submit Attendance
+						</button>
 					</form>
 				) : (
 					<div>

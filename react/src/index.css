@@ -126,3 +126,7 @@ a {
 .smaller {
 	font-size: 1.5rem;
 }
+
+.disabled {
+	opacity: 0.6;
+}

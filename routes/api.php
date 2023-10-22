@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post("/getinvite", [UserController::class, "getInvite"]);
+
+Route::put("/confirm_guest", [UserController::class, "confirmAttandance"]);
