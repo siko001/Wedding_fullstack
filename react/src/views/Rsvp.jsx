@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Spinner from '../components/Spinner';
+import Invite from '../components/Invite';
 
 const Rsvp = () => {
+	const [showSpinner, setShowSpinner] = useState(false);
 	return (
 		<div>
 			<Navbar />
-			RSPV
+			<Invite setShowSpinner={setShowSpinner} />
+			{showSpinner && <Spinner />}
 			<Footer />
 		</div>
 	);

@@ -2,7 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\AdminController;
+use App\Http\Controllers\API\ImageController;
 
 
 /*
@@ -16,10 +19,18 @@ use App\Http\Controllers\Api\UserController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(['auth:sanctum'])->group(function () {
+    // Define the routes that require authentication here
+    Route::post('/registerGuest', [AdminController::class, "registerGuest"]);
 });
 
 Route::post("/getinvite", [UserController::class, "getInvite"]);
-
 Route::put("/confirm_guest", [UserController::class, "confirmAttandance"]);
+
+Route::post('/verifyUser', [ImageController::class, "verifyUser"]);
+Route::post("/uploadImg", [ImageController::class, "uploadImg"]);
+Route::get('/images', [ImageController::class, 'getImages']);
+
+
+Route::post("/registerAdmin", [AdminController::class, "register"]);
+Route::post("loginAdmin", [AdminController::class, "login"]);

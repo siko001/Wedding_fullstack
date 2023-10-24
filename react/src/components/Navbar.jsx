@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom'; // Import useLocation
 
 const Container = styled.div`
 	width: 100%;
@@ -14,6 +14,7 @@ const Container = styled.div`
 	position: sticky;
 	z-index: 999;
 `;
+
 const NavbarContainer = styled.div`
 	padding: 0 1rem;
 	width: 75%;
@@ -87,22 +88,27 @@ const MobileOverLay = styled.div`
 	}
 
 	ul {
+		margin-top: 100px;
 		display: flex;
 		flex-direction: column;
 		gap: 50px;
 		list-style: none;
 		align-items: center;
+		li:hover {
+			cursor: pointer;
+			color: #396caf;
+		}
 	}
 
 	.footer {
 		display: flex;
-
 		justify-content: center;
 	}
 `;
 
 const Navbar = () => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const location = useLocation(); // Get the current location
 
 	const handleOpenMobileMenu = () => {
 		setMobileMenuOpen((prevState) => !prevState);
@@ -120,19 +126,34 @@ const Navbar = () => {
 						<div>
 							<ul>
 								<li>
-									<Link to="/">Home</Link>
+									<Link to="/" className={location.pathname === '/' ? 'active' : ''}>
+										Home
+									</Link>
 								</li>
 								<li>
-									<Link to="/location">Location</Link>
+									<Link to="/location" className={location.pathname === '/location' ? 'active' : ''}>
+										Location
+									</Link>
 								</li>
 								<li>
-									<Link to="/rsvp">RSVP</Link>
+									<Link to="/schedule" className={location.pathname === '/schedule' ? 'active' : ''}>
+										Schedule
+									</Link>
 								</li>
 								<li>
-									<Link to="/menu">Menu</Link>
+									<Link to="/menus" className={location.pathname === '/menus' ? 'active' : ''}>
+										Menus
+									</Link>
 								</li>
 								<li>
-									<Link to="/schedule">Schedule</Link>
+									<Link to="/rsvp" className={location.pathname === '/rsvp' ? 'active' : ''}>
+										RSVP
+									</Link>
+								</li>
+								<li>
+									<Link to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>
+										Gallery
+									</Link>
 								</li>
 							</ul>
 						</div>
@@ -154,19 +175,34 @@ const Navbar = () => {
 						<DesktopMenu>
 							<ul>
 								<li>
-									<Link to="/">Home</Link>
+									<Link to="/" className={location.pathname === '/' ? 'active' : ''}>
+										Home
+									</Link>
 								</li>
 								<li>
-									<Link to="/location">Location</Link>
+									<Link to="/location" className={location.pathname === '/location' ? 'active' : ''}>
+										Location
+									</Link>
 								</li>
 								<li>
-									<Link to="/rsvp">RSVP</Link>
+									<Link to="/schedule" className={location.pathname === '/schedule' ? 'active' : ''}>
+										Schedule
+									</Link>
 								</li>
 								<li>
-									<Link to="/menu">Menu</Link>
+									<Link to="/menus" className={location.pathname === '/menus' ? 'active' : ''}>
+										Menus
+									</Link>
 								</li>
 								<li>
-									<Link to="/schedule">Schedule</Link>
+									<Link to="/rsvp" className={location.pathname === '/rsvp' ? 'active' : ''}>
+										RSVP
+									</Link>
+								</li>
+								<li>
+									<Link to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>
+										Gallery
+									</Link>
 								</li>
 							</ul>
 						</DesktopMenu>

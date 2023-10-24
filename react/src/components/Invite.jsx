@@ -107,7 +107,7 @@ const Invite = ({ setShowSpinner }) => {
 	const nameRef = useRef();
 	const [user, setUser_] = useState(null);
 	const [errors, setErrors] = useState();
-	const { setUser, setToken } = useStateContext();
+	const { setUser } = useStateContext();
 	const [showUserOverlay, setShowUserOverlay] = useState(false);
 
 	const onCloseErrorOverlay = () => {
@@ -132,11 +132,10 @@ const Invite = ({ setShowSpinner }) => {
 		setErrors(null);
 		setShowSpinner(true);
 		axiosClient
-			.post('/getinvite', payload)
+			.post('/getinvite', payload, { headers: { requireAuth: true } })
 			.then(({ data }) => {
 				setUser_(data.user);
 				setUser(data.user);
-				setToken(data.token);
 				setShowUserOverlay(true);
 			})
 			.catch((error) => {

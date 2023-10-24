@@ -70,6 +70,7 @@ const Conatiner = styled.div`
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		text-align: center;
 		gap: 20px;
 		font-size: 2rem;
 		@media screen and (max-width: 750px) {
@@ -94,7 +95,6 @@ const Us = () => {
 						Vrazhalska
 					</div>
 				</div>
-				{/* <FontAwesomeIcon className="primary-color heart" icon={faHeart} /> */}
 				<div className="heart">
 					<Heart />
 				</div>

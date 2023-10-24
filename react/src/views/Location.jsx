@@ -1,17 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
-import Invite from '../components/Invite';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Card from '../components/Card';
+import styled from 'styled-components';
+import Timer from '../components/Timer';
 
 const Conatiner = styled.div``;
 
 const Heading = styled.div`
-	width: 50%;
+	width: 75%;
 	margin: 50px auto;
 	display: flex;
 	justify-content: center;
+	text-align: center;
 	h2 {
 		font-size: 3rem;
 	}
@@ -27,22 +28,14 @@ const CardsContainer = styled.div`
 	@media screen and (max-width: 1000px) {
 		flex-direction: column;
 		align-items: center;
+		width: 100%;
 	}
 `;
 
 const Location = () => {
 	const cardData = [
-		{ image: '.jpg', title: 'wedding Cerimony', time: '5pm', date: '15/06/24', description: 'bla bla bla' },
-		{ image: '.jpg', title: 'wedding Cerimony', time: '5pm', date: '15/06/24', description: 'bla bla bla' },
-		{ image: '.jpg', title: 'wedding Cerimony', time: '5pm', date: '15/06/24', description: 'bla bla bla' },
-		{
-			image: '.jpg',
-			title: 'wedding Cerimony',
-			time: '5pm',
-			date: '15/06/24',
-			description:
-				'bla bla bla hello this is from the lorem ipsum bla bla bla :)ewufbwiubuowbf qu ubiuwbiub iuob uo bou bo uboub ufsfsdfd ad f sa f asfaff  rfwesdfdfd',
-		},
+		{ image: '.jpg', title: 'wedding Cerimony' },
+		{ image: '.jpg', title: 'wedding Cerimony' },
 	];
 	return (
 		<div>
@@ -58,6 +51,7 @@ const Location = () => {
 					))}
 				</CardsContainer>
 			</Conatiner>
+			<Timer />
 			<Footer />
 		</div>
 	);

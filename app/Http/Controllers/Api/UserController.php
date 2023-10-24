@@ -22,11 +22,8 @@ class UserController extends Controller {
             $user = Guest::where('email', $lowercaseEmail)->first();
 
             if ($user && $user->fullname === $capitalizedName) {
-                /**@var User $user */
-                $token = $user->createToken("main")->plainTextToken;
                 return response([
                     "user" => $user,
-                    "token" => $token
                 ]);
             } else {
                 return response([
