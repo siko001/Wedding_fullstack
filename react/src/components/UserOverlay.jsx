@@ -111,7 +111,7 @@ const UserOverlay = ({ user, onClose, setShowSpinner }) => {
 						<p>{responseMessage}</p>
 					</div>
 				)}
-				{user.confirmed === null ? (
+				{user.confirmed === 'no' ? (
 					<form onSubmit={handleSubmit}>
 						<h3 className="primary-color">Attending?</h3>
 						<br></br>

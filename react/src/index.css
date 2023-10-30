@@ -177,3 +177,15 @@ a {
 .err {
 	color: red;
 }
+
+.selected {
+	background-color: #396caf;
+	color: #fff;
+}
+
+.green-text {
+	color: green;
+}
+.red-text {
+	color: red;
+}

@@ -3,11 +3,10 @@ import { useGLTF } from '@react-three/drei';
 import { MeshBasicMaterial } from 'three'; // Import the MeshBasicMaterial
 
 export default function Model(props) {
-  
 	const { nodes, materials } = useGLTF('./models/scene-transformed.glb');
 
-	// Create a red material with increased linewidth
-	const redMaterial = new MeshBasicMaterial({ color: 0xff0000, linewidth: 12 }); // Adjust linewidth as needed
+	
+	const redMaterial = new MeshBasicMaterial({ color: 0xff0000 });
 
 	return (
 		<group {...props} dispose={null}>

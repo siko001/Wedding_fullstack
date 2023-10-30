@@ -4,7 +4,7 @@ import { MeshBasicMaterial } from 'three';
 
 export default function Model(props) {
 	const { nodes, materials } = useGLTF('./models/error-scene-transformed.glb');
-	const redMaterial = new MeshBasicMaterial({ color: 0xff0000, linewidth: 12 });
+	const redMaterial = new MeshBasicMaterial({ color: 0xff0000 });
 
 	const [scale, setScale] = useState([1, 1, 1]);
 

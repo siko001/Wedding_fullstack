@@ -13,10 +13,9 @@ import { useGLTF } from '@react-three/drei';
 import { MeshBasicMaterial } from 'three'; // Import the MeshBasicMaterial
 
 export default function Model(props) {
-	const redMaterial = new MeshBasicMaterial({ color: 0xff0000, linewidth: 12 }); // Adjust linewidth as needed
+	const redMaterial = new MeshBasicMaterial({ color: 0xff0000 });
 
 	const { nodes, materials } = useGLTF('./models/scene-transformed2.glb');
-	console.log(materials);
 	return (
 		<group {...props} dispose={null}>
 			<mesh geometry={nodes.Object_2.geometry} material={redMaterial} position={[-2, -2, 1]} scale={0.099} />
