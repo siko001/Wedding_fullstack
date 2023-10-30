@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AdminController;
+use App\Http\Controllers\Api\GuestFilterController;
 use App\Http\Controllers\API\ImageController;
 
 
@@ -22,6 +23,8 @@ use App\Http\Controllers\API\ImageController;
 Route::middleware(['auth:sanctum'])->group(function () {
     // Define the routes that require authentication here
     Route::post('/registerGuest', [AdminController::class, "registerGuest"]);
+    route::get("/guests/all", [GuestFilterController::class, "getAllGuests"]);
+    route::put("/guests/edit/{id}", [GuestFilterController::class, "editGuest"]);
 });
 
 Route::post("/getinvite", [UserController::class, "getInvite"]);

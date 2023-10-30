@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use App\Models\Guest;
+use App\Mail\WelcomeEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Guest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller {
     public function register(Request $request) {
@@ -55,8 +57,11 @@ class AdminController extends Controller {
             "email" => "required|email|unique:guests,email",
         ]);
         if ($details) {
-
-            Guest::create($details);
+            $capitalizedName = ucwords($details['fullname']);
+            $lowercaseEmail = strtolower($details['email']);
+            info($details);
+            Mail::to($lowercaseEmail)->send(new WelcomeEmail($capitalizedName, $lowercaseEmail));
+            Guest::create(["fullname" => $capitalizedName, "email" => $lowercaseEmail]);
             return response(["message" => "success"], 200);
         } else {
             return response(["message" => "Failure"], 422);

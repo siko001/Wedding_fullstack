@@ -37,10 +37,6 @@ class UserController extends Controller {
         $guestEmail = $userChoice["email"];
         $guest = Guest::where("email", $guestEmail)->first();
         $guestName = $guest["fullname"];
-
-
-
-        info($guestName);
         $guest->confirmed = "yes";
         $attendance = $userChoice['attending'];
         if ($userChoice['attending'] != "yes") {

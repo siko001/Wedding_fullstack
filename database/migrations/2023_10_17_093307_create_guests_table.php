@@ -10,7 +10,7 @@ class CreateGuestsTable extends Migration {
             $table->id();
             $table->string('fullname');
             $table->string('email')->unique();
-            $table->enum('confirmed', ['yes', 'no'])->nullable();
+            $table->enum('confirmed', ['yes', 'no'])->default("no");
             $table->enum('attending', ['yes', 'no'])->nullable();
             $table->string('table_number')->nullable();
             $table->timestamps();
